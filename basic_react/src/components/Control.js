@@ -23,11 +23,8 @@ export default class Control extends Component {
         // lưu giá trị vao state có tên là searchData
         this.setState({
             searchData: value,
-
-
         });
     }
-
     handleSearch = (event) => {
         // thực hiện search, chuyển dữ liệu searchData sang component App
         this.props.handleSearchProp(this.state.searchData)
@@ -69,17 +66,21 @@ export default class Control extends Component {
                         <div className="col-3 d-flex align-items-center">
                             <select style={{ height: "45px" }} className="form-select" onChange={this.handleSort}>
                                 <option value="">Sắp xếp theo</option>
-                                <option value="studentName-ASC">Tên tăng dần</option>
-                                <option value="studentName-DESC">Tên giảm dần</option>
+                                <option value="studentName-ASC">Tên từ a-z</option>
+                                <option value="studentName-DESC">Tên từ z-a</option>
                                 <option value="age-ASC">Tuổi tăng dần</option>
                                 <option value="age-DESC">Tuổi giảm dần</option>
+                                <option value="sex-true">Nam đến nữ</option>
+                                <option value="sex-false">Nữ đến Nam</option>
+                                <option value="studentId-ASC">Mã SV tăng dần</option>
+                                <option value="studentId-DESC">Mã SV giảm dần</option>
+
                             </select>
                         </div>
                     </div>
                 </div>
                 {/* END CONTROL */}
             </>
-
         )
     }
 }

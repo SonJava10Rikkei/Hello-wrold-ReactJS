@@ -13,22 +13,33 @@ class App extends Component {
         {
           studentId: "SV001",
           studentName: "Nguyễn Danh Sơn",
-          age: 29, sex: true,
+          age: 29,
+          sex: true,
           birthDate: "13/11/1993",
           address: "Hà Nội"
         },
         {
           studentId: "SV002",
-          studentName: "Lê Tùng Dương",
-          age: 21, sex: true,
-          birthDate: "20/4/2001",
+          studentName: "Trương Minh Thu",
+          age: 21,
+          sex: false,
+          birthDate: "11/09/2001",
           address: "Đà Nẵng"
         },
         {
           studentId: "SV003",
           studentName: "Phùng thị Minh",
-          age: 18, sex: false,
+          age: 18,
+          sex: false,
           birthDate: "05/11/2004",
+          address: "TP HCM"
+        },
+        {
+          studentId: "SV004",
+          studentName: "Nguyễn Danh Minh",
+          age: 27,
+          sex: true,
+          birthDate: "05/11/1997",
           address: "TP HCM"
         },
       ],
@@ -75,6 +86,7 @@ class App extends Component {
     } else {
       students = [...this.state.students];
     }
+
     // Thực hiện sort trên mảng student
     if (this.state.sortDir != "") {
       if (this.state.sortDir == "studentName") {
@@ -84,15 +96,29 @@ class App extends Component {
           // sortBy = "DESC"
           students.sort((a, b) => (a.studentName > b.studentName) ? -1 : (a.studentName < b.studentName) ? 1 : 0)
         }
-      } else {
+      } else if (this.state.sortDir == "age") {
         // sortDir = age
         if (this.state.sortBy == "ASC") {
-          // students.sort((a, b) => (a.age > b.age) ? 1 : (a.age < b.age) ? -1 : 0)
           students.sort((a, b) => (a.age - b.age))
         } else {
           // sortBy = "DESC"
-          // students.sort((a, b) => (a.age > b.age) ? -1 : (a.age < b.age) ? 1 : 0)
           students.sort((a, b) => (b.age - a.age))
+        }
+      } else if (this.state.sortDir == "sex") {
+        // sortDir = sex
+        console.log(this.state.sortDir);
+        if (this.state.sortBy == "true") {
+          students.sort((a, b) => (a.studentName > b.studentName) ? 1 : (a.studentName < b.studentName) ? -1 : 0)
+        } else {
+          // sortBy = "false"
+          students.sort((a, b) => (a.studentName > b.studentName) ? -1 : (a.studentName < b.studentName) ? 1 : 0)
+        }
+      } else if (this.state.sortDir == "studentId") {
+        if (this.state.sortBy == "ASC") {
+          students.sort((a, b) => a.studentId.localeCompare(b.studentId))
+        } else {
+          // sortBy = "DESC"
+          students.sort((a, b) => b.studentId.localeCompare(a.studentId))
         }
       }
     }

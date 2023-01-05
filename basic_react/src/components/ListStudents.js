@@ -17,12 +17,28 @@ export default class ListStudents extends Component {
             <>
                 {/* START LIST STUDENT */}
                 <div className="card-body">
-                    <h3 className="card-title">Danh sách sinh viên</h3>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <h3 className="card-title">Danh sách sinh viên</h3>
+                        <div className="col-4 d-flex align-items-center">
+                            <select style={{ height: "45px" }} className="form-select" onChange={this.handleSort}>
+                                <option value="">Sắp xếp theo</option>
+                                <option value="studentName-ASC">Tên từ a-z</option>
+                                <option value="studentName-DESC">Tên từ z-a</option>
+                                <option value="age-ASC">Tuổi tăng dần</option>
+                                <option value="age-DESC">Tuổi giảm dần</option>
+                                <option value="sex-true">Nam đến nữ</option>
+                                <option value="sex-false">Nữ đến Nam</option>
+                                <option value="studentId-ASC">Mã SV tăng dần</option>
+                                <option value="studentId-DESC">Mã SV giảm dần</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="table-responsive pt-3">
                         <table className="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>STT</th>
                                     <th>Mã sinh viên</th>
                                     <th>Tên sinh viên</th>
                                     <th>Tuổi</th>
