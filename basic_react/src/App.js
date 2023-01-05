@@ -44,6 +44,10 @@ class App extends Component {
     })
   }
 
+  handleSearch = (searchData) => {
+    // Nhận dữ liệu từ searchData từ Control và thực hiện search
+    
+  }
   render() {
     let elementForm;
     if (this.state.isToggle) {
@@ -58,7 +62,7 @@ class App extends Component {
           <div className="card">
             {/* START CONTROL */}
             {/*B1. Truyền props có tên là propsToggle = handleToggle */}
-            <Control propToggle={this.handleToggle} ></Control>
+            <Control propToggle={this.handleToggle} handleSearchProp={this.handleSearch}></Control>
             {/* END CONTROL */}
             {/* START LIST STUDENT */}
             <ListStudent propToggle={this.handleToggle} students={this.state.students}></ListStudent>
