@@ -4,6 +4,12 @@ class Student extends Component {
     handleUpdate = (student) => {
         this.props.actionAndToggle(true, "UpdateStudent", student);
     }
+    handleDelete = (deleteStudent) => {
+        this.props.deleteStudentProps(deleteStudent);
+    }
+    handleView = (student) => {
+        this.props.viewStudentProps(true, "viewStudent", student );
+    }
     render() {
         let { stInfo } = this.props;
         return (
@@ -18,6 +24,8 @@ class Student extends Component {
                         <button
                             type="button"
                             className="btn btn-danger btn-icon-text"
+                            onClick={() => this.handleView(stInfo)}
+
                         >
                             Xem
                         </button>
@@ -31,6 +39,7 @@ class Student extends Component {
                         <button
                             type="button"
                             className="btn btn-success btn-icon-text"
+                            onClick={() => this.handleDelete(stInfo.id)}
                         >
                             Xóa
                         </button>

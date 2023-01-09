@@ -11,9 +11,9 @@ class App extends Component {
     this.state = {
       isToggle: false,
       students: [
-        { studentId: "SV001", studentName: "Nguyễn Văn A", age: 20, sex: true, birthDate: "2003-04-20", birthPlace: "HN", address: "Hà Nội" },
-        { studentId: "SV002", studentName: "Nguyễn Văn B", age: 22, sex: true, birthDate: "2001-05-01", birthPlace: "HCM", address: "Hồ Chí Minh" },
-        { studentId: "SV003", studentName: "Nguyễn Văn C", age: 23, sex: false, birthDate: "2000-09-09", birthPlace: "ĐN", address: "Đà Nẵng" }
+        { id: 1, studentId: "SV001", studentName: "Nguyễn Danh Sơn", age: 29, sex: true, birthDate: "1993-11-13", birthPlace: "HN", address: "Hà Nội" },
+        { id: 2, studentId: "SV002", studentName: "Vương Đắc Dũng", age: 22, sex: true, birthDate: "2001-05-01", birthPlace: "HCM", address: "Hồ Chí Minh" },
+        { id: 3, studentId: "SV003", studentName: "Phùng thị Minh", age: 18, sex: false, birthDate: "2004-11-05", birthPlace: "ĐN", address: "Đà Nẵng" }
       ],
       searchData: "",
       sortDir: "",
@@ -32,6 +32,11 @@ class App extends Component {
     });
 
   }
+  viewListStudentsApp = (status, actionName, selectedStudent) => {
+    this.setState({
+      isToggle: status,
+    })
+  }
   handleSearch = (searchData) => {
     //Nhận dữ liệu searchData từ Control và lưu vào state
     this.setState({
@@ -43,6 +48,7 @@ class App extends Component {
     this.setState({
       sortDir: sortDir,
       sortBy: sortBy
+
     })
   }
   handleCreate = (isToggle, newStudent) => {
@@ -67,6 +73,18 @@ class App extends Component {
       students: students
     });
   }
+  deleteStudentAppId = (idOfStudent) => {
+    let newStudents = this.state.students.filter((students) => {
+      return idOfStudent != students.id;
+    })
+    this.setState({
+      students: newStudents
+    })
+  }
+  // viewListStudentsApp = () => {
+
+  // }
+
   render() {
     //Thực hiện search
     let students = [];
@@ -114,7 +132,7 @@ class App extends Component {
               <Control actionAndToggleProp={this.handleActionAndToggle} handleSearchProp={this.handleSearch} handleSortProp={this.handleSort}></Control>
               {/* END CONTROL */}
               {/* START LIST STUDENT */}
-              <ListStudent actionAndToggle={this.handleActionAndToggle} students={students}></ListStudent>
+              <ListStudent actionAndToggle={this.handleActionAndToggle} students={students} deleteStudentApp={this.deleteStudentAppId} viewListStudentsProps={this.viewListStudentsApp}></ListStudent>
               {/* END LIST STUDENT */}
             </div>
           </div>

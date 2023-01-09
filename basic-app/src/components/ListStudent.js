@@ -4,12 +4,20 @@ class ListStudent extends Component {
     actionAndToggle = (status, actionName, selectedStudent) => {
         this.props.actionAndToggle(status, actionName, selectedStudent);
     }
+    deleteListStudent = (deleteId) => {
+        this.props.deleteStudentApp(deleteId);
+    }
+    viewListStudents = (status, actionName, selectedStudent) => {
+        this.props.viewListStudentsProps(status, actionName, selectedStudent);
+    }
     render() {
         // Lấy props students trong đối tượng props truyền từ App sang
         let { students } = this.props;
         let elementListStudent = students.map((st, index) => {
-            return <Student key={st.studentId} actionAndToggle={this.actionAndToggle} stInfo={st} stt={index}></Student>
+            return <Student key={st.studentId} actionAndToggle={this.actionAndToggle}
+                stInfo={st} stt={index} deleteStudentProps={this.deleteListStudent} viewStudentProps={this.viewListStudents}></Student>
         })
+
         return (
             <div className="card-body">
                 <h3 className="card-title">Danh sách sinh viên</h3>

@@ -36,27 +36,11 @@ class Form extends Component {
     }
     componentWillMount = () => {
         let { selectedStudent } = this.props;
-        this.setState({
-            studentId: selectedStudent.studentId,
-            studentName: selectedStudent.studentName,
-            age: selectedStudent.age,
-            sex: selectedStudent.sex,
-            birthDate: selectedStudent.birthDate,
-            birthPlace: selectedStudent.birthPlace,
-            address: selectedStudent.address
-        })
+        this.setState(selectedStudent)
     }
     componentWillReceiveProps = (nextProps) => {
         let { selectedStudent } = nextProps;
-        this.setState({
-            studentId: selectedStudent.studentId,
-            studentName: selectedStudent.studentName,
-            age: selectedStudent.age,
-            sex: selectedStudent.sex,
-            birthDate: selectedStudent.birthDate,
-            birthPlace: selectedStudent.birthPlace,
-            address: selectedStudent.address
-        })
+        this.setState(selectedStudent)
     }
     handleUpdate = (e) => {
         let studentUpdate = {
@@ -83,7 +67,12 @@ class Form extends Component {
             elementSubmit = <button type="submit" className="btn btn-primary me-2" onClick={this.handleUpdate}>
                 Update
             </button>
+        } else if (actionName == "viewStudent") {
+            elementSubmit = <button type="submit" className="btn btn-primary me-2" onClick={this.handleUpdate}>
+                Update
+            </button>
         }
+
         return (
             <div className="col-5 grid-margin">
                 <div className="card">
