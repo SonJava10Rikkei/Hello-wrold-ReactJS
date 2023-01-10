@@ -8,7 +8,7 @@ class Student extends Component {
         this.props.deleteStudentProps(deleteStudent);
     }
     handleView = (student) => {
-        this.props.viewStudentProps(true, "viewStudent", student );
+        this.props.viewStudentProps(true, "viewStudent", student);
     }
     render() {
         let { stInfo } = this.props;
