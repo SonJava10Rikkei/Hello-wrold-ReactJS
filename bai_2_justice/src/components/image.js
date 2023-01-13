@@ -2,4 +2,5 @@
 
 export const images = {
     image100: require("../assets/image/carousel-1.jpg")
+    
 }
