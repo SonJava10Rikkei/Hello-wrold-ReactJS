@@ -1,14 +1,31 @@
 .listproducts {
-    margin-top: 50px;
+    margin-top: 90px;
+    display: flex;
+    flex-wrap: wrap !important;
+    gap: 30px 20px;
+}
+
+.product:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.productBtn {
+    justify-content: space-between;
+    display: flex;
+}
+
+.productBtnView {
+    width: 100px;
+    border: 0px !important;
 
 }
 
-.d-flex {
-
-    gap: 20px 10px;
+.productBtnBuy {
+    width: 100px;
+    background-color: rgb(153, 44, 44) !important;
+    border: 0px !important;
 }
 
-.product {
-    height: 10px;
-
+.productBtnBuy:hover {
+    background-color: rgb(223, 12, 12) !important;
 }
